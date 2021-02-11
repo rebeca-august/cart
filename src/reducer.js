@@ -56,7 +56,7 @@ const reducer = (state, action) => {
     return { ...state, cart: action.payload, loading: false }
   }
 
-  return state
+  throw new Error('no matching action type')
 }
 
 export default reducer

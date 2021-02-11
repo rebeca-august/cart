@@ -1,5 +1,4 @@
-import React, { useState, useContext, useReducer, useEffect } from 'react'
-import cartItems from './data'
+import React, { useContext, useReducer, useEffect } from 'react'
 import reducer from './reducer'
 
 const url = 'https://course-api.com/react-useReducer-cart-project'
@@ -60,7 +59,7 @@ const AppProvider = ({ children }) => {
     </AppContext.Provider>
   )
 }
-// make sure use
+
 export const useGlobalContext = () => {
   return useContext(AppContext)
 }
