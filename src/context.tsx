@@ -1,32 +1,41 @@
-import React, { useContext, useReducer, useEffect } from 'react'
+import React, { useContext, useReducer, useEffect, ReactNode } from 'react'
 import reducer from './reducer'
+import { State } from './reducer'
 
 const url = 'https://course-api.com/react-useReducer-cart-project'
-const AppContext = React.createContext()
+const AppContext = React.createContext({} as State)
 
-const initialState = {
+const initialState: State = {
   loading: false,
   cart: [],
   total: 0,
   amount: 0,
+  clearCart: () => {},
+  decrease: () => {},
+  increase: () => {},
+  remove: () => {},
 }
 
-const AppProvider = ({ children }) => {
+type Props = {
+  children: ReactNode
+}
+
+const AppProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' })
   }
 
-  const remove = (id) => {
+  const remove = (id: number) => {
     dispatch({ type: 'REMOVE', payload: id })
   }
 
-  const increase = (id) => {
+  const increase = (id: number) => {
     dispatch({ type: 'INCREASE', payload: id })
   }
 
-  const decrease = (id) => {
+  const decrease = (id: number) => {
     dispatch({ type: 'DECREASE', payload: id })
   }
 

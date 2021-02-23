@@ -1,7 +1,15 @@
 import React from 'react'
 import { useGlobalContext } from './context'
 
-const CartItem = ({ id, img, title, price, amount }) => {
+export type Item = {
+  id: number
+  title: string
+  price: number
+  img: string
+  amount: number
+}
+
+const CartItem = ({ id, img, title, price, amount }: Item) => {
   const { remove, increase, decrease } = useGlobalContext()
   return (
     <article className="cart-item">

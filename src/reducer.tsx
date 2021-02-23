@@ -1,4 +1,34 @@
-const reducer = (state, action) => {
+import { Item } from './CartItem'
+
+export type State = {
+  loading: boolean
+  cart: Item[]
+  total: number
+  amount: number
+  clearCart: () => void
+  remove: (id: number) => void
+  increase: (id: number) => void
+  decrease: (id: number) => void
+}
+
+type ClearCartAction = { type: 'CLEAR_CART' }
+type RemoveAction = { type: 'REMOVE'; payload: number }
+type IncreaseAction = { type: 'INCREASE'; payload: number }
+type DecreaseAction = { type: 'DECREASE'; payload: number }
+type GetTotalAction = { type: 'GET_TOTAL' }
+type LoadingAction = { type: 'LOADING' }
+type DisplayItemsAction = { type: 'DISPLAY_ITEMS'; payload: Item[] }
+
+export type Action =
+  | ClearCartAction
+  | RemoveAction
+  | IncreaseAction
+  | DecreaseAction
+  | GetTotalAction
+  | LoadingAction
+  | DisplayItemsAction
+
+const reducer = (state: State, action: Action): State => {
   if (action.type === 'CLEAR_CART') {
     return { ...state, cart: [] }
   }
